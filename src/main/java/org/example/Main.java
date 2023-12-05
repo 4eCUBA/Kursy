@@ -40,6 +40,7 @@ public class Main {
         //4
         chetNeChetScanner(); //тест 1
         chetNeChetScanner(); // тест 2
+        chetNeChetScanner(); // тест 3
     }
 
     public static int sum(int a, int b){
