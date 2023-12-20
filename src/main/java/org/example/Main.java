@@ -1,5 +1,7 @@
 package org.example;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -178,6 +180,8 @@ public class Main {
 Низкая эффективность: для больших массивов и для частично отсортированных массивов
 
  */
-
 }
+
+
+
     }
