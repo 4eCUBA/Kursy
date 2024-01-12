@@ -32,8 +32,11 @@ public class Car {
         return V;
     }
 
-    public void setV(int v) {
-        V = v;
+    public void setV(int V) {
+        if (V <= 0){
+            throw new RuntimeException("May be it`s bike");
+        }
+        this.V = V;
     }
 
     public String toString(){
