@@ -13,14 +13,16 @@ public class HttpRequestExample {
     public static void main(String[] args) {
         HttpClient client = HttpClient.newHttpClient();
         String url = "https://iconv.mono.st4g3.com/api/tran/supplement";
-        long startId = 129433922;
-        String date = "2024-02-01T10:55:03";
-        String uid = "8DCCE7451D9BDADDE053050310AC34FB";
-        String acc = "26200340267687";
-        String clientId = "1000033715";
+        long startId = 1243420742;
+        String date = "2024-02-14T17:09:03";
+        String uid = "A61C8C6667C7A677E053050310ACB27E";
+        String acc = "26209340275487";
+        String clientId = "1000036041";
+        String sid = "240214l1tXXg5fx3o2oc2";
+        int transCount = 1;
 
 
-        for (int i = 0; i < 101; i++) {
+        for (int i = 0; i < transCount; i++) {
             JSONObject data = new JSONObject();
             data.put("id", Long.toString(startId + i));
             data.put("acc", acc);
@@ -31,9 +33,9 @@ public class HttpRequestExample {
             data.put("cardProduct", "2");
 
             JSONObject tranProc = new JSONObject();
-            tranProc.put("AMOUNT", 81.00);
-            tranProc.put("AMOUNTACCT", 81.00);
-            tranProc.put("AMOUNTORIG", 81.00);
+            tranProc.put("AMOUNT", 100000.00);
+            tranProc.put("AMOUNTACCT", 100000.00);
+            tranProc.put("AMOUNTORIG", 100000.00);
             tranProc.put("APPROVALCODE", "493115");
             tranProc.put("AUTHFIID", 3);
             tranProc.put("AUTHPSNAME", "FTB1");
@@ -41,7 +43,7 @@ public class HttpRequestExample {
             tranProc.put("AVAILBALANCE2", 4672.11);
             tranProc.put("BALANCECURRENCYACCT", 0);
             tranProc.put("CURRENCY", 980);
-            tranProc.put("CURRENCYACCT", 840);
+            tranProc.put("CURRENCYACCT", 980);
             tranProc.put("CURRENCYORIG", 980);
             tranProc.put("DRAFTCAPTURE", 1);
             tranProc.put("EXCHANGERATEACCT", 31.939394);
@@ -112,20 +114,20 @@ public class HttpRequestExample {
             data.put("partner", new JSONObject());
             data.put("additionalInfo", new JSONObject());
             JSONObject bonus = new JSONObject();
-            bonus.put("bonusCategories", new JSONArray(Arrays.asList("25")));
+            bonus.put("bonusCategories", new JSONArray(Arrays.asList("187")));
             data.put("bonus", bonus);
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")
-                    .header("sid", "240201cc6XXg5f5c01f15")
+                    .header("sid", sid)
                     .POST(HttpRequest.BodyPublishers.ofString(data.toString()))
                     .build();
 
             try {
                 HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-                System.out.println("Request " + (i + 1) + ", Response: " + response.statusCode());
+                System.out.println("Request " + (i + 1) + ", Response: " + response.statusCode() + response.body());
                 // Здесь можно добавить обработку ответа
             } catch (Exception e) {
                 e.printStackTrace();
